@@ -2,7 +2,12 @@
 function updateUI(data) {}
 
 // Show loading message
-function showLoading() {}
+function showLoading() {
+  
+}
 
 // Show error message
-function showError() {}
+
+function showError() {
+  document.getElementById("status").textContent = message;
+}
