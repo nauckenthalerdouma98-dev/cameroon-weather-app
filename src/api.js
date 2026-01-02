@@ -4,13 +4,13 @@ const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 const REQUEST_TIMEOUT = 8000;
 
 const cameroonRegions = [
-    { name: 'Yaoundé', lat: 3.8480, lon: 11.5021 },
+    { name: 'Yaounde', lat: 3.8480, lon: 11.5021 },
     { name: 'Douala', lat: 4.0511, lon: 9.7679 },
     { name: 'Bamenda', lat: 5.9630, lon: 10.1591 },
     { name: 'Bafoussam', lat: 5.4820, lon: 10.4250 },
     { name: 'Garoua', lat: 9.3068, lon: 13.3932 },
     { name: 'Maroua', lat: 10.5962, lon: 14.3240 },
-    { name: 'Ngaoundéré', lat: 7.3265, lon: 13.5670 },
+    { name: 'Ngaoundere', lat: 7.3265, lon: 13.5670 },
     { name: 'Bertoua', lat: 4.5773, lon: 13.6907 },
     { name: 'Ebolowa', lat: 2.9042, lon: 11.1547 },
     { name: 'Limbe', lat: 4.0172, lon: 9.2167 }
