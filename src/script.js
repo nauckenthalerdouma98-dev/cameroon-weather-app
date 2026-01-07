@@ -1,8 +1,4 @@
-/**
- * =================================================================
- * MEMBER 5: WEEK 1 WORK - CAPTURE INPUT & CALL API
- * =================================================================
- */
+
 
 // DOM Elements
 const searchInput = document.getElementById('search-input');
@@ -82,13 +78,8 @@ if (retryButton) {
 console.log("Weather App loaded successfully!");
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Set default city
+    // 1. Ensure the input is empty on load
     if (searchInput) {
-        searchInput.value = "Douala";
+        searchInput.value = ""; 
     }
-    
-    // Show initial weather
-    setTimeout(() => {
-        handleSearch();
-    }, 500);
 });

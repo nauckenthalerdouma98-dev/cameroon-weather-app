@@ -193,3 +193,10 @@ function updateBackground(data) {
     newLayer.classList.remove("incoming", "active");
   }, 1500);
 }
+
+function resetWeatherUI() {
+  const weatherDisplay = document.getElementById("weather-display");
+  if (weatherDisplay) {
+    weatherDisplay.style.display = 'none'; // Hide the box until first search
+  }
+}
