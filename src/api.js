@@ -12,8 +12,7 @@ const cameroonRegions = [
     { name: 'Ngaoundere', lat: 7.3265, lon: 13.5670 },
     { name: 'Bertoua', lat: 4.5773, lon: 13.6907 },
     { name: 'Ebolowa', lat: 2.9042, lon: 11.1547 },
-    { name: 'Limbe', lat: 4.0172, lon: 9.2167 },
-    { name: 'Buea' , lat: 4.1550, lon: 9.2435}
+    { name: 'Limbe', lat: 4.0172, lon: 9.2167 }
 ];
 
 async function fetchWeatherForAllRegions() {
