@@ -1,4 +1,3 @@
-
 const API_KEY = '4e2f56ebf57de77ebe5ed469bcc8b4d0';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 const REQUEST_TIMEOUT = 8000;
@@ -31,7 +30,7 @@ async function fetchWeatherForAllRegions() {
 }
 
 async function fetchWeatherData(lat, lon, regionName) {
-    const url = ${BASE_URL}?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric;
+    const url = `${BASE_URL}?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
 
@@ -43,7 +42,7 @@ async function fetchWeatherData(lat, lon, regionName) {
             if (response.status === 401) {
                 throw new Error('Invalid API key');
             }
-            throw new Error(API request failed: ${response.status});
+            throw new Error(`API request failed: ${response.status}`);
         }
         
         const data = await response.json();
@@ -68,10 +67,10 @@ async function fetchWeatherData(lat, lon, regionName) {
     } catch (error) {
         if (error.name === 'AbortError') {
             const timeoutError = new Error('Request timed out');
-            console.error(Error fetching weather for ${regionName}:, timeoutError.message);
+            console.error(`Error fetching weather for ${regionName}:`, timeoutError.message);
             throw timeoutError;
         }
-        console.error(Error fetching weather for ${regionName}:, error.message);
+        console.error(`Error fetching weather for ${regionName}:`, error.message);
         throw error;
     }
 }
@@ -92,7 +91,7 @@ function processWeatherResults(results) {
 }
 
 async function fetchWeatherByCity(cityName) {
-    const url = ${BASE_URL}?q=${encodeURIComponent(cityName)},CM&appid=${API_KEY}&units=metric;
+    const url = `${BASE_URL}?q=${encodeURIComponent(cityName)},CM&appid=${API_KEY}&units=metric`;
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
 
@@ -101,25 +100,31 @@ async function fetchWeatherByCity(cityName) {
         clearTimeout(timeoutId);
 
         if (response.status === 404) {
-            throw new Error(City "${cityName}" not found in Cameroon);
+            throw new Error(`City "${cityName}" not found in Cameroon`);
         }
         
         if (!response.ok) {
-            throw new Error(API request failed: ${response.status});
+            throw new Error(`API request failed: ${response.status}`);
         }
         
         const data = await response.json();
         
         return {
-            region: data.name,
-            temperature: data.main.temp,
-            feels_like: data.main.feels_like,
-            humidity: data.main.humidity,
-            pressure: data.main.pressure,
-            weather: data.weather[0].main,
-            description: data.weather[0].description,
-            icon: data.weather[0].icon,
-            wind_speed: data.wind?.speed || 0,
+            name: data.name,
+            main: {
+                temp: data.main.temp,
+                feels_like: data.main.feels_like,
+                humidity: data.main.humidity,
+                pressure: data.main.pressure
+            },
+            weather: [{
+                main: data.weather[0].main,
+                description: data.weather[0].description,
+                icon: data.weather[0].icon
+            }],
+            wind: {
+                speed: data.wind?.speed || 0
+            },
             timestamp: new Date().toISOString()
         };
         
@@ -127,7 +132,7 @@ async function fetchWeatherByCity(cityName) {
         if (error.name === 'AbortError') {
             throw new Error('Request timed out');
         }
-        console.error(Error fetching weather for ${cityName}:, error.message);
+        console.error(`Error fetching weather for ${cityName}:`, error.message);
         throw error;
     }
 }
@@ -147,10 +152,8 @@ function getMockWeatherData() {
     }));
 }
 
-export {
-    fetchWeatherForAllRegions,
-    fetchWeatherByCity,
-    fetchWeatherData,
-    getMockWeatherData,
-    cameroonRegions
-};
+// Make functions available for script.js
+window.fetchWeatherByCity = fetchWeatherByCity;
+window.fetchWeatherForAllRegions = fetchWeatherForAllRegions;
+window.getMockWeatherData = getMockWeatherData;
+window.cameroonRegions = cameroonRegions;

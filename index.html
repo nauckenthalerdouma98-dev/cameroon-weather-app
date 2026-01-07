@@ -2,51 +2,46 @@
 <html>
 <head>
     <title>Weather App</title>
-    <link rel="stylesheet" href="src/styles.css">
-     <link rel="shortcut icon" href="/images/Screenshot 2025-12-14 124134.png" type="image/x-icon
+    <link rel="stylesheet" href="/src/styles.css">
+    <link rel="shortcut icon" href="/images/Screenshot 2025-12-14 124134.png" type="image/x-icon">
 </head>
 <body>
     <div id="app">
-        <!-- Search bar goes here -->
-        <div id="weather-display">
-            <!-- Weather data goes here -->
-        </div>
-        <div id="loading">Loading...</div>
-        <div id="error">Error message</div>
+        <header>
+            <h1>⛅WEATHER APP</h1>
+        </header>
+
+        <main>
+            <section id="location-input">
+                <input type="text" id="search-input" placeholder="Enter city in Cameroon..." />
+                <button id="search-button">Search</button>
+            </section>
+
+            <section id="weather-display">
+                <h2 id="city">City Name</h2>
+                <p id="temperature">Temperature: ---°C</p>
+                <p id="description">Condition: ---</p>
+                <p id="humidity">Humidity: ----</p>
+                <p id="wind">Wind Speed: ---</p>
+                <!-- Weather icon will be added dynamically if needed -->
+                <img id="weatherIcon" src="" alt="Weather icon" style="display: none; width: 50px; height: 50px;">
+            </section>
+
+            <!-- Loading and error divs -->
+            <div id="loading">Loading...</div>
+            <div id="error">
+                <p>⚠️ <span id="error-text">Error message here</span></p>
+                <button id="retry-button" style="display: none;">Try Again</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Weather App</p>
+        </footer>
     </div>
-    
-    <script src="src/api.js"></script>
-    <script src="src/ui.js"></script>
-    <script src="src/script.js"></script>
-    
-    <header>
-    <h1>⛅WEATHER APP</h1>
-    </header>
 
-    <main>
-    <section id="location-input">
-      <input type="text" placeholder="Enter city..." />
-      <button>Search</button>
-    </section>
-
-    <section id="weather-display">
-      <h2>City Name</h2>
-      <p>Temperature: ---°C</p>
-      <p>Condition: ---</p>
-      <P>Humidity: ----</P>
-      <P>Wind Speed: ---</P>
-      
-    </section>
-  </main>
-
-  <footer>
-
-        <p>Powered by Weather App</p>
-        
-    </footer>
-
+    <script src="/src/api.js"></script>
+    <script src="/src/ui.js"></script>
+    <script src="/src/script.js"></script>
 </body>
-
 </html>
-
-
