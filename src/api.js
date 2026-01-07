@@ -67,10 +67,8 @@ async function fetchWeatherData(lat, lon, regionName) {
     } catch (error) {
         if (error.name === 'AbortError') {
             const timeoutError = new Error('Request timed out');
-            console.error(`Error fetching weather for ${regionName}:`, timeoutError.message);
             throw timeoutError;
         }
-        console.error(`Error fetching weather for ${regionName}:`, error.message);
         throw error;
     }
 }
@@ -132,7 +130,6 @@ async function fetchWeatherByCity(cityName) {
         if (error.name === 'AbortError') {
             throw new Error('Request timed out');
         }
-        console.error(`Error fetching weather for ${cityName}:`, error.message);
         throw error;
     }
 }
@@ -152,7 +149,6 @@ function getMockWeatherData() {
     }));
 }
 
-// Make functions available for script.js
 window.fetchWeatherByCity = fetchWeatherByCity;
 window.fetchWeatherForAllRegions = fetchWeatherForAllRegions;
 window.getMockWeatherData = getMockWeatherData;
