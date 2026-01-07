@@ -1,7 +1,0 @@
-{
-  "city": "Test City",
-  "temp": 25,
-  "humidity": 70,
-  "wind": 5,
-  "condition": "sunny"
-}
